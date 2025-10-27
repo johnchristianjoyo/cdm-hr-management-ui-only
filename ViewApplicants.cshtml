@@ -1,0 +1,330 @@
+@page
+@model CDM.HRManagement.Pages.HR.ViewApplicantsModel
+@{
+    ViewData["Title"] = "View Applicants";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h1 class="display-6 fw-bold text-primary">
+                <i class="bi bi-person-lines-fill"></i> Pending Applicants
+            </h1>
+            <p class="text-muted">Review and process employee onboarding submissions</p>
+        </div>
+        <div class="col-md-6 text-end">
+            <a href="/HR/Dashboard" class="btn btn-outline-secondary btn-lg">
+                <i class="bi bi-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 bg-warning bg-opacity-10">
+                <div class="card-body text-center">
+                    <i class="bi bi-hourglass-split text-warning fs-1"></i>
+                    <h3 class="fw-bold mt-2 mb-0">3</h3>
+                    <p class="text-muted mb-0">Pending Review</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 bg-success bg-opacity-10">
+                <div class="card-body text-center">
+                    <i class="bi bi-check-circle-fill text-success fs-1"></i>
+                    <h3 class="fw-bold mt-2 mb-0">12</h3>
+                    <p class="text-muted mb-0">Hired This Month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 bg-danger bg-opacity-10">
+                <div class="card-body text-center">
+                    <i class="bi bi-x-circle-fill text-danger fs-1"></i>
+                    <h3 class="fw-bold mt-2 mb-0">5</h3>
+                    <p class="text-muted mb-0">Rejected</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Applicants List -->
+    <div class="row">
+        <div class="col-12">
+            <!-- Applicant 1 -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-0 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0 fw-bold">Carlos Mendoza</h5>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar"></i> Submitted: October 20, 2025
+                            </small>
+                        </div>
+                        <span class="badge bg-warning fs-6">Pending Review</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <!-- Quick Info -->
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Position</small>
+                            <strong>Assistant Professor</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Department</small>
+                            <strong>College of Engineering</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Email</small>
+                            <strong>carlos.mendoza@gmail.com</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Phone</small>
+                            <strong>0917-123-4567</strong>
+                        </div>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary" onclick="viewDetails('Carlos Mendoza')">
+                            <i class="bi bi-eye"></i> View Full Details
+                        </button>
+                        <div>
+                            <button class="btn btn-success btn-lg me-2" onclick="hireApplicant('Carlos Mendoza')">
+                                <i class="bi bi-check-circle"></i> Hire
+                            </button>
+                            <button class="btn btn-danger btn-lg" onclick="rejectApplicant('Carlos Mendoza')">
+                                <i class="bi bi-x-circle"></i> Reject
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applicant 2 -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-0 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0 fw-bold">Sofia Reyes</h5>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar"></i> Submitted: October 19, 2025
+                            </small>
+                        </div>
+                        <span class="badge bg-warning fs-6">Pending Review</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Position</small>
+                            <strong>Librarian</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Department</small>
+                            <strong>Library</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Email</small>
+                            <strong>sofia.reyes@gmail.com</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Phone</small>
+                            <strong>0918-234-5678</strong>
+                        </div>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary" onclick="viewDetails('Sofia Reyes')">
+                            <i class="bi bi-eye"></i> View Full Details
+                        </button>
+                        <div>
+                            <button class="btn btn-success btn-lg me-2" onclick="hireApplicant('Sofia Reyes')">
+                                <i class="bi bi-check-circle"></i> Hire
+                            </button>
+                            <button class="btn btn-danger btn-lg" onclick="rejectApplicant('Sofia Reyes')">
+                                <i class="bi bi-x-circle"></i> Reject
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applicant 3 -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-0 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0 fw-bold">Miguel Torres</h5>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar"></i> Submitted: October 18, 2025
+                            </small>
+                        </div>
+                        <span class="badge bg-warning fs-6">Pending Review</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Position</small>
+                            <strong>IT Support Specialist</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Department</small>
+                            <strong>IT Department</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Email</small>
+                            <strong>miguel.torres@gmail.com</strong>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-muted d-block">Phone</small>
+                            <strong>0919-345-6789</strong>
+                        </div>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary" onclick="viewDetails('Miguel Torres')">
+                            <i class="bi bi-eye"></i> View Full Details
+                        </button>
+                        <div>
+                            <button class="btn btn-success btn-lg me-2" onclick="hireApplicant('Miguel Torres')">
+                                <i class="bi bi-check-circle"></i> Hire
+                            </button>
+                            <button class="btn btn-danger btn-lg" onclick="rejectApplicant('Miguel Torres')">
+                                <i class="bi bi-x-circle"></i> Reject
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">
+                    <i class="bi bi-person-badge"></i> Applicant Details: <span id="applicantName"></span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="fw-bold text-primary mb-3">Personal Information</h6>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <small class="text-muted">Full Name</small>
+                        <p class="fw-bold mb-0">Carlos Mendoza Santos</p>
+                    </div>
+                    <div class="col-md-4">
+                        <small class="text-muted">Date of Birth</small>
+                        <p class="fw-bold mb-0">January 15, 1990</p>
+                    </div>
+                    <div class="col-md-4">
+                        <small class="text-muted">Place of Birth</small>
+                        <p class="fw-bold mb-0">Manila, Philippines</p>
+                    </div>
+                    <div class="col-md-4">
+                        <small class="text-muted">Sex</small>
+                        <p class="fw-bold mb-0">Male</p>
+                    </div>
+                    <div class="col-md-4">
+                        <small class="text-muted">Civil Status</small>
+                        <p class="fw-bold mb-0">Married</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small class="text-muted">Height</small>
+                        <p class="fw-bold mb-0">170 cm</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small class="text-muted">Weight</small>
+                        <p class="fw-bold mb-0">65 kg</p>
+                    </div>
+                </div>
+
+                <h6 class="fw-bold text-primary mb-3">Educational Attainment</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>School Name</th>
+                                <th>Year Graduated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>College</td>
+                                <td>University of the Philippines</td>
+                                <td>2012</td>
+                            </tr>
+                            <tr>
+                                <td>Master's Degree</td>
+                                <td>Ateneo de Manila University</td>
+                                <td>2015</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h6 class="fw-bold text-primary mb-3">Skills & Hobbies</h6>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <small class="text-muted">Skills</small>
+                        <p>Engineering Design, AutoCAD, Project Management, Teaching</p>
+                    </div>
+                    <div class="col-md-6">
+                        <small class="text-muted">Hobbies</small>
+                        <p>Reading, Basketball, Traveling, Photography</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="hireFromModal()">
+                    <i class="bi bi-check-circle"></i> Hire
+                </button>
+                <button type="button" class="btn btn-danger" onclick="rejectFromModal()">
+                    <i class="bi bi-x-circle"></i> Reject
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hire Confirmation Modal -->
+<div class="modal fade" id="hireModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">
+                    <i class="bi bi-check-circle"></i> Confirm Hire
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to hire <strong id="hireApplicantName"></strong>?</p>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Start Date <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" required>
+                </div>
+                <p class="text-muted mb-0">
+                    <i class="bi bi-info-circle"></i> The applicant will be added to the employee list and receive a welcome email.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class=" btn
